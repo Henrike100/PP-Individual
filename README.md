@@ -27,3 +27,30 @@ Para mais informações, digite:
 ```
 
 ## Exemplos de execução
+
+```
+./mybasename.pl inc/stdio.h
+stdio.h
+```
+
+```
+./mybasename.pl src/main.cpp pp
+main.c
+```
+
+```
+./mybasename.pl -s .py project/main.py
+main
+```
+
+```
+./mybasename.pl -a dir/file1 dir/file2
+file1
+file2
+```
+
+```
+./mybasename.pl --suffix=.h stdio.h string.h
+stdio
+string
+```
