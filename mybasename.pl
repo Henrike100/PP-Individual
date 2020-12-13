@@ -5,12 +5,11 @@ flag("--multiple").
 flag("-s").
 flag("-z").
 flag("--zero").
-flag("--help").
-flag("--version").
 
 is_help_or_version(Argv) :-
-    atom_string(Flag, "--help"),
-    member(Flag, Argv),
+    [Flag|_] = Argv,
+    atom_string(Flag, FlagString),
+    FlagString == "--help",
     write("Uso:  basename NOME [SUFIXO]"), nl,
     write(" ou:  basename OPÇÃO... NOME..."), nl,
     write("Mostra o NOME sem quaisquer componentes iniciais de diretório."), nl,
@@ -36,8 +35,9 @@ is_help_or_version(Argv) :-
     write("ou disponível localmente via: info \"(coreutils) basename invocation\""), nl, halt(0).
 
 is_help_or_version(Argv) :-
-    atom_string(Flag, "--version"),
-    member(Flag, Argv),
+    [Flag|_] = Argv,
+    atom_string(Flag, FlagString),
+    FlagString == "--version",
     write("basename (GNU coreutils) 8.30"), nl,
     write("Copyright (C) 2018 Free Software Foundation, Inc."), nl,
     write("Licença GPLv3+: GNU GPL versão 3 ou posterior <https://gnu.org/licenses/gpl.html>"), nl,
